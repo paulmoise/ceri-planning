@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c8a42bfe-9577-47a0-8672-43196074d193" name="Changes" comment="design month view v2">
+    <list default="true" id="c8a42bfe-9577-47a0-8672-43196074d193" name="Changes" comment="design month view v3">
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/ceri/prototypeinterface/ceriplanning/helper/Event.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/ceri/prototypeinterface/ceriplanning/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/ceri/prototypeinterface/ceriplanning/HomeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/home-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/home-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -134,7 +136,7 @@
       <workItem from="1709553273884" duration="10000000" />
       <workItem from="1709844006997" duration="579000" />
       <workItem from="1709844596224" duration="12674000" />
-      <workItem from="1710065351846" duration="24086000" />
+      <workItem from="1710065351846" duration="29350000" />
     </task>
     <task id="LOCAL-00001" summary="layout design">
       <option name="closed" value="true" />
@@ -176,7 +178,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710165695682</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="design month view v3">
+      <option name="closed" value="true" />
+      <created>1710168790803</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1710168790803</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -198,7 +208,8 @@
     <MESSAGE value="layout design update" />
     <MESSAGE value="design month view v1" />
     <MESSAGE value="design month view v2" />
-    <option name="LAST_COMMIT_MESSAGE" value="design month view v2" />
+    <MESSAGE value="design month view v3" />
+    <option name="LAST_COMMIT_MESSAGE" value="design month view v3" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
