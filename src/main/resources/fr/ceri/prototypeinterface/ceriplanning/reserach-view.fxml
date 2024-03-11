@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.ceri.prototypeinterface.ceriplanning.SearchContorller">
+    <top>
+        <HBox spacing="10">
+            <Button text="Recherche par nom" onAction="#searchByName"/>
+            <Button text="Recherche par catégorie" onAction="#searchByCategory"/>
+            <Button text="Recherche par date" onAction="#searchByDate"/>
+        </HBox>
+    </top>
+
+    <center>
+        <!-- Zone pour afficher le contenu du corps de la page -->
+        <!-- Cette zone sera mise à jour en fonction du type de recherche choisi -->
+        <fx:include source="search-by-name.fxml" fx:id="searchByNameView"/>
+        <fx:include source="search-by-category.fxml" fx:id="searchByCategoryView"/>
+        <fx:include source="search-by-date.fxml" fx:id="searchByDateView"/>
+    </center>
+
+</BorderPane>

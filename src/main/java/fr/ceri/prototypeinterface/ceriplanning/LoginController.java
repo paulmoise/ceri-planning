@@ -3,6 +3,7 @@ package fr.ceri.prototypeinterface.ceriplanning;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
@@ -28,6 +29,12 @@ public class LoginController {
     @FXML
     private Label statusLabel;
 
+    private Stage stage;
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
+
     @FXML
     void handleLogin(ActionEvent event) {
         String username = usernameField.getText();
@@ -45,15 +52,21 @@ public class LoginController {
             statusLabel.setText("Connexion en tant que professeur : " + username);
         } else {
             statusLabel.setText("Veuillez sélectionner un type de compte.");
+            return; // Quitter la méthode si aucun type de compte n'est sélectionné
         }
 
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login-view.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-            Stage stage = new Stage();
-            stage.setTitle("Hello!");
-            stage.setScene(scene);
-            stage.show();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("login-view.fxml"));
+            Parent root = fxmlLoader.load();
+            Scene scene = new Scene(root, 320, 240);
+
+            Stage currentStage = (stage != null) ? stage : new Stage();
+            currentStage.setTitle("Votre titre ici");
+            currentStage.setScene(scene);
+            currentStage.show();
+
+            // Fermer la fenêtre actuelle
+            ((Stage) usernameField.getScene().getWindow()).close();
         } catch (IOException e) {
             e.printStackTrace();
         }
