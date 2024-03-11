@@ -4,41 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c8a42bfe-9577-47a0-8672-43196074d193" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/dashboard.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/ceri/prototypeinterface/ceriplanning/controller/HomeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/ceri/prototypeinterface/ceriplanning/helper/ICSParser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/ceri/prototypeinterface/ceriplanning/views/HomeView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/calendar-view.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/calendar-views.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/fonts/Material-Design-Iconic-Font.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/home-view.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/icons/app_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/icons/calendar_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/icons/drag_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/icons/event_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/icons/exit_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/icons/gear_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/icons/icon2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/icons/info_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/icons/menu_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/icons/month_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/icons/plus_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/icons/plus_icon1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/icons/save_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/icons/tools_icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/style/add_calendar.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/style/mainStyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/style/materialButtonStyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/style/menuStyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/style/scrollbarStyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/style/tableStyle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/ceri/prototypeinterface/ceriplanning/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/ceri/prototypeinterface/ceriplanning/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/hello-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/hello-view.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="c8a42bfe-9577-47a0-8672-43196074d193" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -139,6 +105,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.HelloApplication" />
         <item itemvalue="Application.HelloApplication" />
         <item itemvalue="Application.ICSParser" />
         <item itemvalue="Application.CalendarApp" />

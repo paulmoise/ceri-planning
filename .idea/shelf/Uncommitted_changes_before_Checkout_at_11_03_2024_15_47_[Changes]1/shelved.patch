@@ -1,0 +1,48 @@
+Index: src/main/java/fr/ceri/prototypeinterface/ceriplanning/controller/HomeController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package fr.ceri.prototypeinterface.ceriplanning.controller;\n\n//import java.\npublic class HomeController {\n\n    String[] weekAbbr = {\"Sun\", \"Mon\", \"Tue\", \"Wed\", \"Thu\", \"Fri\", \"Sat\"};\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/fr/ceri/prototypeinterface/ceriplanning/controller/HomeController.java b/src/main/java/fr/ceri/prototypeinterface/ceriplanning/controller/HomeController.java
+--- a/src/main/java/fr/ceri/prototypeinterface/ceriplanning/controller/HomeController.java	
++++ b/src/main/java/fr/ceri/prototypeinterface/ceriplanning/controller/HomeController.java	
+@@ -1,8 +1,36 @@
+ package fr.ceri.prototypeinterface.ceriplanning.controller;
+ 
+ //import java.
++
++
++import javafx.fxml.FXML;
++        import javafx.scene.control.Button;
++        import javafx.scene.control.Tab;
++        import javafx.scene.control.TabPane;
++
+ public class HomeController {
+ 
+-    String[] weekAbbr = {"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
++    @FXML
++    private TabPane tabPane;
++
++    @FXML
++    private Tab jourTab;
++
++    @FXML
++    private Tab semaineTab;
++
++    @FXML
++    private Tab moisTab;
++
++    @FXML
++    private Button jourButton;
++
++    @FXML
++    private Button semaineButton;
++
++    @FXML
++    private Button moisButton;
++
++
+ 
+ }
