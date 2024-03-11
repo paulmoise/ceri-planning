@@ -6,4 +6,6 @@ module fr.ceri.prototypeinterface.ceriplanning {
 
     opens fr.ceri.prototypeinterface.ceriplanning to javafx.fxml;
     exports fr.ceri.prototypeinterface.ceriplanning;
+    exports fr.ceri.prototypeinterface.ceriplanning.controller;
+
 }
