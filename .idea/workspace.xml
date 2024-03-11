@@ -5,18 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c8a42bfe-9577-47a0-8672-43196074d193" name="Changes" comment="layout design update">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/icons/add.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/icons/backup.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/icons/burger.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/icons/data.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/icons/exit.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/icons/home.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/ceri/prototypeinterface/ceriplanning/model/CalendarActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/calendar-views.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/calendar-views.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/ceri/prototypeinterface/ceriplanning/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/ceri/prototypeinterface/ceriplanning/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/fr/ceri/prototypeinterface/ceriplanning/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/ceri/prototypeinterface/ceriplanning/controller/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/home-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/home-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/style/add_calendar.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/style/mainStyle.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/style/materialButtonStyle.css" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +40,9 @@
   &quot;associatedIndex&quot;: 0
 }</component>
   <component name="ProjectId" id="2cMd8tSUJQCd2KY1QBtbONneA5d" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -142,7 +138,7 @@
       <workItem from="1709553273884" duration="10000000" />
       <workItem from="1709844006997" duration="579000" />
       <workItem from="1709844596224" duration="12674000" />
-      <workItem from="1710065351846" duration="6382000" />
+      <workItem from="1710065351846" duration="16312000" />
     </task>
     <task id="LOCAL-00001" summary="layout design">
       <option name="closed" value="true" />
@@ -160,7 +156,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710148062702</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="layout design update">
+      <option name="closed" value="true" />
+      <created>1710149890530</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1710149890530</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
