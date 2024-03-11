@@ -1,5 +1,6 @@
 package fr.ceri.prototypeinterface.ceriplanning;
 
+import fr.ceri.prototypeinterface.ceriplanning.helper.Event;
 import fr.ceri.prototypeinterface.ceriplanning.model.CalendarActivity;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,7 +16,10 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.Duration;
+import java.time.LocalTime;
 import java.time.ZonedDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
 
 public class HomeController implements Initializable {
@@ -42,6 +46,8 @@ public class HomeController implements Initializable {
     @FXML
     private FlowPane monthCalendar;
 
+    @FXML
+    private GridPane weekCalendarGrid;
 
     @FXML
     private ImageView burgerImageView;
@@ -54,6 +60,60 @@ public class HomeController implements Initializable {
 
     @FXML
     private AnchorPane contentAnchorPane;
+
+    private void fillGridWithTimeSlotsAndEvents() {
+        // Define the start and end times
+        LocalTime startTime = LocalTime.of(8, 0); // 08:00
+        LocalTime endTime = LocalTime.of(19, 0); // 19:00
+        Duration slotDuration = Duration.ofMinutes(30); // 30 minutes slots
+
+        int numCols = weekCalendarGrid.getColumnConstraints().size();
+        List<LocalTime> timeSlots = new ArrayList<>();
+
+        LocalTime currentTime = startTime;
+        while (currentTime.isBefore(endTime.plusSeconds(1))) { // Include 19:00
+            timeSlots.add(currentTime);
+            // Add time slot as the first column in each row
+            Text timeSlotText = new Text(currentTime.toString());
+            weekCalendarGrid.add(timeSlotText, 0, timeSlots.size() - 1);
+            currentTime = currentTime.plus(slotDuration);
+        }
+    }
+
+    private void fillGridWithTimeSlots() {
+        LocalTime time = LocalTime.of(8, 0); // Starting time
+        for (int row = 0; row < 24; row++) { // Adjust the number of rows based on your time slots
+            Text timeSlot = new Text(time.toString());
+            weekCalendarGrid.add(timeSlot, 0, row); // First column for time slots
+            time = time.plusMinutes(30); // Increment by 30 minutes for the next slot
+        }
+    }
+
+    private void addEventToGrid(Event event) {
+        // Calculate the start row and row span for the event
+        int startHour = event.getStartTime().getHour();
+        int startMinute = event.getStartTime().getMinute();
+        int endHour = event.getEndTime().getHour();
+        int endMinute = event.getEndTime().getMinute();
+
+        // Assuming your grid starts at 8AM and has 30-minute intervals
+        int startRow = (startHour - 8) * 2 + (startMinute / 30);
+        long durationInMinutes = ChronoUnit.MINUTES.between(event.getStartTime(), event.getEndTime());
+        int rowSpan = (int) (durationInMinutes / 30);
+
+        // Create the event text or more complex node
+        Text eventText = new Text("Event: "+event.getName() + "\n\n Type: " + event.getEventType());
+        eventText.setWrappingWidth(100); // Ensure the text wraps if needed
+
+        // Merge cells and add the event to the grid
+        GridPane.setRowIndex(eventText, startRow);
+        GridPane.setColumnIndex(eventText, 1); // Assuming events are in the second column
+        GridPane.setRowSpan(eventText, rowSpan);
+
+        weekCalendarGrid.getChildren().add(eventText);
+    }
+
+
 
     @FXML
     void homeClicked(MouseEvent event) {
@@ -83,11 +143,49 @@ public class HomeController implements Initializable {
         }
     }
 
+
+    private void initializeDynamicGridPane() {
+        // Set properties for GridPane
+        gridPane.setGridLinesVisible(true);
+        gridPane.setPrefHeight(520.0);
+        gridPane.setPrefWidth(720.0);
+
+        // Add ColumnConstraints
+        for (int i = 0; i < 6; i++) { // Assuming 6 columns as in your example
+            ColumnConstraints column = new ColumnConstraints();
+            column.setHgrow(Priority.SOMETIMES);
+            column.setMinWidth(10);
+            column.setPrefWidth(100);
+            gridPane.getColumnConstraints().add(column);
+        }
+
+        // Add RowConstraints
+        for (int i = 0; i < 24; i++) { // Assuming 24 rows as in your example
+            RowConstraints row = new RowConstraints();
+            row.setVgrow(Priority.SOMETIMES);
+            row.setMinHeight(10);
+            row.setPrefHeight(30);
+            gridPane.getRowConstraints().add(row);
+        }
+
+        // Add the GridPane to your layout, for example to an AnchorPane or another container
+        // For example, if adding to an AnchorPane:
+        AnchorPane.setTopAnchor(gridPane, 0.0);
+        AnchorPane.setBottomAnchor(gridPane, 0.0);
+        AnchorPane.setLeftAnchor(gridPane, 0.0);
+        AnchorPane.setRightAnchor(gridPane, 0.0);
+        contentAnchorPane.getChildren().add(gridPane); // Assuming you want to add it to 'contentAnchorPane'
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         dateFocus = ZonedDateTime.now();
         System.out.println(dateFocus.getYear());
         today = ZonedDateTime.now();
+
+        fillGridWithTimeSlotsAndEvents();
+        fillGridWithTimeSlots();
+        addEventToGrid(new Event(LocalTime.of(8, 0), LocalTime.of(9, 30), "Java Class", "Cours"));
         drawCalendar();
     }
 
