@@ -2,7 +2,7 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<GridPane gridLinesVisible="true" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.ceri.prototypeinterface.ceriplanning.HomeController"
+<GridPane gridLinesVisible="true" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
           hgap="10"  style="-fx-background-color: #E6F0FF;"> <!-- Ajout de hgap pour définir l'espace horizontal entre les colonnes -->
 
     <!-- Colonne des jours de la semaine -->

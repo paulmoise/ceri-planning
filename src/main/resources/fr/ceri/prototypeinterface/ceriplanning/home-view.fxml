@@ -1,21 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="exit" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.ceri.prototypeinterface.ceriplanning.HomeController">
+<AnchorPane fx:id="exit" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.ceri.prototypeinterface.ceriplanning.HomeController">
     <children>
         <AnchorPane prefHeight="46.0" prefWidth="200.0" style="-fx-background-color: #000835;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
             <children>
-                <ImageView fx:id="burgerImageView" fitHeight="2304.0" fitWidth="30.0" layoutX="8.0" layoutY="9.0" onMouseClicked="#burgerClicked" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="2304.0" fitWidth="30.0" layoutX="8.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@icons/burger.png" />
                     </image>
                 </ImageView>
-            </children>
-        </AnchorPane>
+            </children></AnchorPane>
         <AnchorPane layoutY="46.0" prefHeight="454.0" prefWidth="44.0" style="-fx-background-color: White;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="46.0">
             <children>
                 <VBox alignment="TOP_CENTER" layoutX="-6.0" prefHeight="238.0" prefWidth="54.0" spacing="15.0" AnchorPane.topAnchor="20.0">
@@ -23,24 +30,23 @@
                         <ImageView fx:id="homeImageView" fitHeight="46.0" fitWidth="32.0" onMouseClicked="#homeClicked" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@icons/home.png" />
-                            </image>
-                        </ImageView>
+                            </image></ImageView>
                         <ImageView fx:id="addImageView" fitHeight="46.0" fitWidth="32.0" onMouseClicked="#addClicked" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@icons/add.png" />
                             </image>
                         </ImageView>
-                        <ImageView fx:id="backupImageView" fitHeight="46.0" fitWidth="32.0" onMouseClicked="#backupClicked" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@icons/backup.png" />
                             </image>
                         </ImageView>
-                        <ImageView fx:id="dataImageView" fitHeight="46.0" fitWidth="32.0" onMouseClicked="#dataClicked" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@icons/data.png" />
                             </image>
                         </ImageView>
-                        <ImageView fx:id="userImageView" fitHeight="46.0" fitWidth="32.0" onMouseClicked="#userClicked" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="46.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@icons/user.png" />
                             </image>
@@ -49,13 +55,13 @@
                 </VBox>
             </children>
         </AnchorPane>
-        <AnchorPane fx:id="contentAnchorpan" layoutX="49.0" layoutY="46.0" prefHeight="454.0" prefWidth="751.0">
+        <AnchorPane fx:id="contentAnchorPane" layoutX="49.0" layoutY="46.0">
             <children>
-                <TabPane fx:id="tabPane" layoutX="7.0" prefHeight="461.0" prefWidth="745.0" tabClosingPolicy="UNAVAILABLE">
+                <TabPane  layoutX="3.0" layoutY="3.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <tabs>
                         <Tab text="Jour">
                             <content>
-                                <AnchorPane fx:id="jourAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                     <children>
                                         <Text layoutX="273.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jour" />
                                     </children>
@@ -64,21 +70,78 @@
                         </Tab>
                         <Tab text="Semaine">
                             <content>
-                                <AnchorPane fx:id="semaineAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="171.0" prefWidth="414.0" />
+                                <AnchorPane prefHeight="642.0" prefWidth="744.0" style="-fx-background-color: #f2fafc;">
+                                    <FlowPane fx:id="weekCalendar" hgap="10.0" layoutX="14.0" layoutY="116.0" prefHeight="498.0" prefWidth="716.0" vgap="5.0" />
+                                    <HBox alignment="CENTER" layoutX="163.0" layoutY="14.0" prefHeight="44.0" prefWidth="419.0" spacing="5.0">
+                                        <!--                                <children>-->
+                                        <!--                                    <Button mnemonicParsing="false" onAction="#backOneMonth" text="&lt;" />-->
+                                        <!--                                    <Text fx:id="year" strokeType="OUTSIDE" strokeWidth="0.0" text="####">-->
+                                        <!--                                        <font>-->
+                                        <!--                                            <Font size="22.0" />-->
+                                        <!--                                        </font>-->
+                                        <!--                                    </Text>-->
+                                        <!--                                    <Text fx:id="month" strokeType="OUTSIDE" strokeWidth="0.0" text="####">-->
+                                        <!--                                        <font>-->
+                                        <!--                                            <Font size="22.0" />-->
+                                        <!--                                        </font>-->
+                                        <!--                                    </Text>-->
+                                        <!--                                    <Button mnemonicParsing="false" onAction="#forwardOneMonth" text="&gt;" />-->
+                                        <!--                                </children>-->
+                                    </HBox>
+                                    <HBox alignment="CENTER" layoutX="14.0" layoutY="78.0" prefHeight="44.0" prefWidth="716.0" spacing="88.75">
+                                        <children>
+                                            <Text layoutX="213.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lundi" textAlignment="CENTER" />
+                                            <Text layoutX="222.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mardi" textAlignment="CENTER" />
+                                            <Text layoutX="232.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mercredi" textAlignment="CENTER" />
+                                            <Text layoutX="241.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jeudi" textAlignment="CENTER" />
+                                            <Text layoutX="251.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vendredi" textAlignment="CENTER" />
+                                        </children>
+                                        <padding>
+                                            <Insets right="9.0" />
+                                        </padding>
+                                    </HBox>
+                                </AnchorPane>
                             </content>
                         </Tab>
                         <Tab text="Mois">
                             <content>
-                                <AnchorPane fx:id="moisAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                    <children>
-                                        <Text layoutX="169.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mois" />
-                                    </children>
+                                <AnchorPane prefHeight="642.0" prefWidth="744.0" style="-fx-background-color: #f2fafc;">
+                                    <FlowPane fx:id="monthCalendar" hgap="10.0" layoutX="14.0" layoutY="116.0" prefHeight="498.0" prefWidth="716.0" vgap="5.0" />
+                                    <HBox alignment="CENTER" layoutX="163.0" layoutY="14.0" prefHeight="44.0" prefWidth="419.0" spacing="5.0">
+                                        <children>
+                                            <Button mnemonicParsing="false" onAction="#backOneMonth" text="&lt;" />
+                                            <Text fx:id="year" strokeType="OUTSIDE" strokeWidth="0.0" text="####">
+                                                <font>
+                                                    <Font size="22.0" />
+                                                </font>
+                                            </Text>
+                                            <Text fx:id="month" strokeType="OUTSIDE" strokeWidth="0.0" text="####">
+                                                <font>
+                                                    <Font size="22.0" />
+                                                </font>
+                                            </Text>
+                                            <Button mnemonicParsing="false" onAction="#forwardOneMonth" text="&gt;" />
+                                        </children>
+                                    </HBox>
+                                    <HBox alignment="CENTER" layoutX="14.0" layoutY="78.0" prefHeight="44.0" prefWidth="716.0" spacing="88.75">
+                                        <children>
+                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Su" textAlignment="CENTER" />
+                                            <Text layoutX="213.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mo" textAlignment="CENTER" />
+                                            <Text layoutX="222.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tu" textAlignment="CENTER" />
+                                            <Text layoutX="232.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="We" textAlignment="CENTER" />
+                                            <Text layoutX="241.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Th" textAlignment="CENTER" />
+                                            <Text layoutX="251.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fr" textAlignment="CENTER" />
+                                            <Text layoutX="266.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sa" textAlignment="CENTER" />
+                                        </children>
+                                        <padding>
+                                            <Insets right="9.0" />
+                                        </padding>
+                                    </HBox>
                                 </AnchorPane>
                             </content>
                         </Tab>
                     </tabs>
                 </TabPane>
-            </children>
-        </AnchorPane>
+            </children></AnchorPane>
     </children>
 </AnchorPane>
