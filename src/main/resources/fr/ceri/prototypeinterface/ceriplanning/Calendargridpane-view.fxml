@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<GridPane gridLinesVisible="true" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.ceri.prototypeinterface.ceriplanning.HomeController"
+          hgap="10"  style="-fx-background-color: #E6F0FF;"> <!-- Ajout de hgap pour définir l'espace horizontal entre les colonnes -->
+
+    <!-- Colonne des jours de la semaine -->
+    <Label text="Lundi" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+    <Label text="Mardi" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+    <Label text="Mercredi" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+    <Label text="Jeudi" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+    <Label text="Vendredi" GridPane.columnIndex="4" GridPane.rowIndex="0" />
+    <Label text="Samedi" GridPane.columnIndex="5" GridPane.rowIndex="0" />
+    <Label text="Dimanche" GridPane.columnIndex="6" GridPane.rowIndex="0" />
+
+    <!-- Lignes de 30 minutes de 9h30 à 19h00 -->
+    <Label text="" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+    <Label text="" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+    <Label text="" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+    <Label text="" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+    <Label text="" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+    <Label text="" GridPane.columnIndex="0" GridPane.rowIndex="8" />
+    <Label text="" GridPane.columnIndex="0" GridPane.rowIndex="7" />
+    <Label text="" GridPane.columnIndex="0" GridPane.rowIndex="8" />
+    <Label text="" GridPane.columnIndex="0" GridPane.rowIndex="9" />
+    <Label text="" GridPane.columnIndex="0" GridPane.rowIndex="10" />
+    <Label text="" GridPane.columnIndex="0" GridPane.rowIndex="11" />
+    <Label text="" GridPane.columnIndex="0" GridPane.rowIndex="12" />
+    <Label text="" GridPane.columnIndex="0" GridPane.rowIndex="13" />
+    <Label text="" GridPane.columnIndex="0" GridPane.rowIndex="14" />
+    <Label text="" GridPane.columnIndex="0" GridPane.rowIndex="15" />
+    <Label text="" GridPane.columnIndex="0" GridPane.rowIndex="16" />
+    <Label text="" GridPane.columnIndex="0" GridPane.rowIndex="17" />
+    <Label text="" GridPane.columnIndex="0" GridPane.rowIndex="18" />
+    <Label text="" GridPane.columnIndex="0" GridPane.rowIndex="19" />
+    <Label text="" GridPane.columnIndex="0" GridPane.rowIndex="20" />
+    <Label text="" GridPane.columnIndex="0" GridPane.rowIndex="21" />
+    <Label text="" GridPane.columnIndex="0" GridPane.rowIndex="22" />
+
+    <!-- Ajout du cours -->
+    <Label text="Mon cours" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.columnSpan="6" />
+
+    <columnConstraints>
+        <ColumnConstraints percentWidth="14.28" /> <!-- Chaque colonne occupe environ 1/7 de la largeur -->
+        <ColumnConstraints percentWidth="14.28" />
+        <ColumnConstraints percentWidth="14.28" />
+        <ColumnConstraints percentWidth="14.28" />
+        <ColumnConstraints percentWidth="14.28" />
+        <ColumnConstraints percentWidth="14.28" />
+        <ColumnConstraints percentWidth="14.28" />
+    </columnConstraints>
+
+    <rowConstraints>
+        <!-- Vous pouvez ajuster ces contraintes en fonction de la hauteur de ligne que vous souhaitez -->
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+    </rowConstraints>
+
+    <padding>
+        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+    </padding>
+
+</GridPane>

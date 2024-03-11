@@ -11,6 +11,9 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/ceri/prototypeinterface/ceriplanning/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/ceri/prototypeinterface/ceriplanning/controller/HomeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/home-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/home-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/style/add_calendar.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/style/mainStyle.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/style/materialButtonStyle.css" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
