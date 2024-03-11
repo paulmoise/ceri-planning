@@ -18,7 +18,7 @@ public class HelloApplication extends Application {
     public void start(Stage primaryStage) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("home-view.fxml")));
 
-        primaryStage.initStyle(StageStyle.UNDECORATED);
+        primaryStage.initStyle(StageStyle.DECORATED);
 
         root.setOnMousePressed(event -> {
             x = event.getSceneX();
@@ -30,7 +30,7 @@ public class HelloApplication extends Application {
             primaryStage.setY(event.getScreenY() - y);
         });
 
-        primaryStage.setScene(new Scene(root, 800, 500));
+        primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
 

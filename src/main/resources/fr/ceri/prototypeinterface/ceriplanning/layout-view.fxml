@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<AnchorPane fx:id="exit" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.ceri.prototypeinterface.ceriplanning.HomeController">
+    <children>
+        <AnchorPane prefHeight="46.0" prefWidth="200.0" style="-fx-background-color: #000835;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <children>
+                <ImageView fitHeight="2304.0" fitWidth="30.0" layoutX="8.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@icons/burger.png" />
+                    </image>
+                </ImageView>
+            </children></AnchorPane>
+        <AnchorPane layoutY="46.0" prefHeight="454.0" prefWidth="44.0" style="-fx-background-color: White;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="46.0">
+
+        </AnchorPane>
+    </children>
+</AnchorPane>
