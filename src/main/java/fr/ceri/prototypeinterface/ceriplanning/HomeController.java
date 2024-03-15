@@ -1,12 +1,17 @@
 package fr.ceri.prototypeinterface.ceriplanning;
 
-import fr.ceri.prototypeinterface.ceriplanning.helper.Event;
+import fr.ceri.prototypeinterface.ceriplanning.helper.Utils;
 import fr.ceri.prototypeinterface.ceriplanning.model.CalendarActivity;
+import fr.ceri.prototypeinterface.ceriplanning.model.Event;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
@@ -17,15 +22,22 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 import java.net.URL;
 import java.time.Duration;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZonedDateTime;
-import java.time.temporal.ChronoUnit;
 import java.util.*;
+
+import static fr.ceri.prototypeinterface.ceriplanning.helper.ICSFileParser.parseIcsFile;
+import static fr.ceri.prototypeinterface.ceriplanning.helper.Utils.*;
 
 public class HomeController implements Initializable {
 
+
     @FXML
     private AnchorPane weekcalendar;
+
+    @FXML
+    private GridPane dayCalendarGrid;
 
     // Initialize the GridPane
     private GridPane gridPane = new GridPane();
@@ -89,30 +101,29 @@ public class HomeController implements Initializable {
         }
     }
 
-    private void addEventToGrid(Event event) {
-        // Calculate the start row and row span for the event
-        int startHour = event.getStartTime().getHour();
-        int startMinute = event.getStartTime().getMinute();
-        int endHour = event.getEndTime().getHour();
-        int endMinute = event.getEndTime().getMinute();
-
-        // Assuming your grid starts at 8AM and has 30-minute intervals
-        int startRow = (startHour - 8) * 2 + (startMinute / 30);
-        long durationInMinutes = ChronoUnit.MINUTES.between(event.getStartTime(), event.getEndTime());
-        int rowSpan = (int) (durationInMinutes / 30);
-
-        // Create the event text or more complex node
-        Text eventText = new Text("Event: "+event.getName() + "\n\n Type: " + event.getEventType());
-        eventText.setWrappingWidth(100); // Ensure the text wraps if needed
-
-        // Merge cells and add the event to the grid
-        GridPane.setRowIndex(eventText, startRow);
-        GridPane.setColumnIndex(eventText, 1); // Assuming events are in the second column
-        GridPane.setRowSpan(eventText, rowSpan);
-
-        weekCalendarGrid.getChildren().add(eventText);
-    }
-
+//    private void addEventToGrid(Event event) {
+//        // Calculate the start row and row span for the event
+//        int startHour = event.getStartTime().getHour();
+//        int startMinute = event.getStartTime().getMinute();
+//        int endHour = event.getEndTime().getHour();
+//        int endMinute = event.getEndTime().getMinute();
+//
+//        // Assuming your grid starts at 8AM and has 30-minute intervals
+//        int startRow = (startHour - 8) * 2 + (startMinute / 30);
+//        long durationInMinutes = ChronoUnit.MINUTES.between(event.getStartTime(), event.getEndTime());
+//        int rowSpan = (int) (durationInMinutes / 30);
+//
+//        // Create the event text or more complex node
+//        Text eventText = new Text("Event: " + event.getName() + "\n\n Type: " + event.getEventType());
+//        eventText.setWrappingWidth(100); // Ensure the text wraps if needed
+//
+//        // Merge cells and add the event to the grid
+//        GridPane.setRowIndex(eventText, startRow);
+//        GridPane.setColumnIndex(eventText, 1); // Assuming events are in the second column
+//        GridPane.setRowSpan(eventText, rowSpan);
+//
+//        weekCalendarGrid.getChildren().add(eventText);
+//    }
 
 
     @FXML
@@ -180,13 +191,190 @@ public class HomeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         dateFocus = ZonedDateTime.now();
-        System.out.println(dateFocus.getYear());
         today = ZonedDateTime.now();
+
+        String filePath = "data/calendar.ics"; // Replace with your file path
+        List<Event> events = parseIcsFile(filePath);
+        System.out.println("Events: " + events);
+        // get time slot
+        Map<String, Integer> timeSlots = Utils.generateTimeSlots(LocalTime.of(8, 0), LocalTime.of(19, 0), Duration.ofMinutes(30));
+
+        // header
+        Label allDays = new Label("");
+        StackPane allDaysPane = new StackPane(allDays);
+        allDaysPane.setAlignment(Pos.CENTER); // Center the label within the stack pane
+
+        String headerWeekTitleStyle = "-fx-font-weight: bold; -fx-font-size: 15px;";
+        Label monday = new Label("Lundi");
+        monday.setStyle(headerWeekTitleStyle);
+        StackPane mondayPane = new StackPane(monday);
+        mondayPane.setAlignment(Pos.CENTER);
+
+        Label tuesday = new Label("Mardi");
+        tuesday.setStyle(headerWeekTitleStyle);
+        StackPane tuesdayPane = new StackPane(tuesday);
+        tuesdayPane.setAlignment(Pos.CENTER);
+
+        Label wednesday = new Label("Mercredi");
+        wednesday.setStyle(headerWeekTitleStyle);
+        StackPane wednesdayPane = new StackPane(wednesday);
+        wednesdayPane.setAlignment(Pos.CENTER);
+
+        Label thursday = new Label("Jeudi");
+        thursday.setStyle(headerWeekTitleStyle);
+        StackPane thursdayPane = new StackPane(thursday);
+        thursdayPane.setAlignment(Pos.CENTER);
+
+        Label friday = new Label("Vendredi");
+        friday.setStyle(headerWeekTitleStyle);
+        StackPane fridayPane = new StackPane(friday);
+        fridayPane.setAlignment(Pos.CENTER);
+
+
+        dayCalendarGrid.add(allDaysPane, 0, 0);
+        dayCalendarGrid.add(mondayPane, 1, 0);
+        dayCalendarGrid.add(tuesdayPane, 2, 0);
+        dayCalendarGrid.add(wednesdayPane, 3, 0);
+        dayCalendarGrid.add(thursdayPane, 4, 0);
+        dayCalendarGrid.add(fridayPane, 5, 0);
+
+//        dayCalendarGrid.setHgap(5);
+        dayCalendarGrid.setVgap(0.5);
+
+        dayCalendarGrid.setPadding(new Insets(10, 10, 10, 10));
+
+
+        ColumnConstraints column1 = new ColumnConstraints();
+        ColumnConstraints column2 = new ColumnConstraints();
+        ColumnConstraints column3 = new ColumnConstraints();
+        ColumnConstraints column4 = new ColumnConstraints();
+        ColumnConstraints column5 = new ColumnConstraints();
+        ColumnConstraints column6 = new ColumnConstraints();
+
+        dayCalendarGrid.getColumnConstraints().addAll(column1, column2, column3, column4, column5, column6);
+
+        column1.setPrefWidth(200);
+        column2.setPrefWidth(200);
+        column3.setPrefWidth(200);
+        column4.setPrefWidth(200);
+        column5.setPrefWidth(200);
+        column6.setPrefWidth(200);
+
+        double percentWidth = 100.0 / 6; // This divides the grid equally among the 6 columns
+
+
+        column1.setPercentWidth(percentWidth);
+        column2.setPercentWidth(percentWidth);
+        column3.setPercentWidth(percentWidth);
+        column4.setPercentWidth(percentWidth);
+        column5.setPercentWidth(percentWidth);
+        column6.setPercentWidth(percentWidth);
+
+
+        for (int col = 0; col < 6; col++) {
+            for (int row = 1; row < 24; row++) {
+                if (col == 0) {
+                    Label slot = new Label(timeSlots.keySet().toArray()[row - 1].toString());
+                    slot.setStyle("-fx-font-size: 12px; -fx-font-weight: bold;");
+                    StackPane slotPane = new StackPane(slot);
+                    slotPane.setStyle("-fx-background-color: #f4f4f4;" +
+                            "-fx-border-color: #e1e1e1; " +
+                            "-fx-border-width: 1; " +
+                            "-fx-border-style: dashed;"
+                    );
+                    slotPane.setAlignment(Pos.CENTER); // Center the label within the stack pane
+                    dayCalendarGrid.add(slotPane, col, row);
+
+                } else {
+                    Button button = getButton(row, col);
+
+                    dayCalendarGrid.add(button, col, row);
+                }
+
+
+//                Button rowSpanButton2 = new Button("This label spans 3 rows");
+//                // This node will span 3 rows
+//                rowSpanButton2.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+//
+//                dayCalendarGrid.add(rowSpanButton2, 5, 10);
+//                GridPane.setRowSpan(rowSpanButton2, 3);
+
+
+            }
+        }
+
+
+        for (Event event : events) {
+
+            if (isValidDateFormat(event.getDtStart()) && isValidDateFormat(event.getDtEnd()) && getWeekOfYear(event.getDtStart()) ) {
+
+                LocalDateTime updatedStartTime = addOneHourToDate(event.getDtStart());
+                LocalDateTime updatedEndTime = addOneHourToDate(event.getDtEnd());
+
+                if (event.getDescriptionDetails().getTd().contains("M1-IA-IL-ALT") || event.getDescriptionDetails().getTd().contains("M1 INTELLIGENCE")) {
+
+                    int numberOf30MinutesSlots = calculateNumberOf30MinIntervals(updatedStartTime, updatedEndTime);
+                    String stringEvent = "Debut: " + event.getDtStart() + "\nFin: " + event.getDtEnd() + "\nSalle: " + event.getDescriptionDetails().getSalle() + "\nEnseignant : " + event.getDescriptionDetails().getEnseignant() + "\nType: "+event.getDescriptionDetails().getType() + "\nMatiere:" + event.getDescriptionDetails().getMatiere() + "\n Formation: " + event.getDescriptionDetails().getTd();
+
+                    int startCol = getDayOfWeek(updatedStartTime);
+
+                    System.out.println("start = " + event.getDtStart());
+                    System.out.println("End = " + event.getDtEnd());
+
+                    String startTime = extractTime(updatedStartTime);
+                    System.out.println(startTime);
+
+                    if (timeSlots.containsKey(startTime) && startCol != -1) {
+                        int startRow = timeSlots.get(startTime);
+                        System.out.println("Nrow: " + numberOf30MinutesSlots);
+                        System.out.println("StartCol: " + startCol);
+                        System.out.println("startRow: " + startRow);
+
+
+                        Button buttonEvent = new Button(stringEvent);
+                        buttonEvent.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+
+                        dayCalendarGrid.add(buttonEvent, startCol, startRow);
+                        GridPane.setRowSpan(buttonEvent, numberOf30MinutesSlots + 1);
+                    }
+
+
+                }
+
+
+            }
+
+        }
+
 
         fillGridWithTimeSlotsAndEvents();
         fillGridWithTimeSlots();
-        addEventToGrid(new Event(LocalTime.of(8, 0), LocalTime.of(9, 30), "Java Class", "Cours"));
+//        addEventToGrid(new Event(LocalTime.of(8, 0), LocalTime.of(9, 30), "Java Class", "Cours"));
         drawCalendar();
+    }
+
+
+    private Button getButton(int row, int col) {
+        Button button = new Button("Row: " + row + " Col: " + col);
+        button.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+
+        button.setStyle("-fx-background-color: #fafafa;" +
+                "-fx-border-color: #e1e1e1; " +
+                "-fx-border-width: 1; " +
+                "-fx-border-style: dashed;");
+
+
+        button.setOnMouseEntered(e -> button.setStyle("-fx-background-color: #cccccc; " +
+                "-fx-border-color: black; " +
+                "-fx-border-width: 1; " +
+                "-fx-border-style: dashed; " +
+                "-fx-background-insets: 0;"));
+        button.setOnMouseExited(e -> button.setStyle("-fx-background-color: #fafafa;" +
+                "-fx-border-color: #e1e1e1; " +
+                "-fx-border-width: 1; " +
+                "-fx-border-style: dashed;"));
+
+        return button;
     }
 
     @FXML
@@ -205,7 +393,6 @@ public class HomeController implements Initializable {
 
 
     private void drawCalendar() {
-        System.out.println(dateFocus.getYear());
         year.setText(String.valueOf(dateFocus.getYear()));
         month.setText(String.valueOf(dateFocus.getMonth()));
         double calendarWidth = monthCalendar.getPrefWidth();
