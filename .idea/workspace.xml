@@ -4,24 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c8a42bfe-9577-47a0-8672-43196074d193" name="Changes" comment="design month view v4">
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/ceri/prototypeinterface/ceriplanning/helper/ICSFileParser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/ceri/prototypeinterface/ceriplanning/model/DescriptionDetails.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/ceri/prototypeinterface/ceriplanning/model/Enseignant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/ceri/prototypeinterface/ceriplanning/model/Etudiant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/ceri/prototypeinterface/ceriplanning/model/Formation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/ceri/prototypeinterface/ceriplanning/model/Matiere.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/ceri/prototypeinterface/ceriplanning/model/Salle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/ceri/prototypeinterface/ceriplanning/model/TypeCours.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/icons/left-arrow.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/style/calendarStyle.css" afterDir="false" />
+    <list default="true" id="c8a42bfe-9577-47a0-8672-43196074d193" name="Changes" comment="month calendar view">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/calendar.ics" beforeDir="false" afterPath="$PROJECT_DIR$/data/calendar.ics" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/ceri/prototypeinterface/ceriplanning/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/ceri/prototypeinterface/ceriplanning/HelloApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/ceri/prototypeinterface/ceriplanning/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/ceri/prototypeinterface/ceriplanning/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/ceri/prototypeinterface/ceriplanning/helper/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/ceri/prototypeinterface/ceriplanning/model/Event.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/ceri/prototypeinterface/ceriplanning/helper/ICSParser.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/ceri/prototypeinterface/ceriplanning/helper/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/ceri/prototypeinterface/ceriplanning/helper/Utils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/home-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/home-view.fxml" afterDir="false" />
     </list>
@@ -186,7 +171,8 @@
       <workItem from="1710065351846" duration="36242000" />
       <workItem from="1710229590576" duration="3553000" />
       <workItem from="1710289405531" duration="54139000" />
-      <workItem from="1710499550042" duration="3123000" />
+      <workItem from="1710499550042" duration="5251000" />
+      <workItem from="1710847538696" duration="5638000" />
     </task>
     <task id="LOCAL-00001" summary="layout design">
       <option name="closed" value="true" />
@@ -244,7 +230,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710182404305</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="month calendar view">
+      <option name="closed" value="true" />
+      <created>1710503045417</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1710503045417</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -268,7 +262,8 @@
     <MESSAGE value="design month view v2" />
     <MESSAGE value="design month view v3" />
     <MESSAGE value="design month view v4" />
-    <option name="LAST_COMMIT_MESSAGE" value="design month view v4" />
+    <MESSAGE value="month calendar view" />
+    <option name="LAST_COMMIT_MESSAGE" value="month calendar view" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

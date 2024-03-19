@@ -3,6 +3,9 @@ package fr.ceri.prototypeinterface.ceriplanning;
 import fr.ceri.prototypeinterface.ceriplanning.helper.Utils;
 import fr.ceri.prototypeinterface.ceriplanning.model.CalendarActivity;
 import fr.ceri.prototypeinterface.ceriplanning.model.Event;
+import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -37,10 +40,12 @@ public class HomeController implements Initializable {
     private AnchorPane weekcalendar;
 
     @FXML
-    private GridPane dayCalendarGrid;
+    private GridPane weekCalendarGrid;
+
+    @FXML
+    private HBox weekCalendarGridHbox;
 
     // Initialize the GridPane
-    private GridPane gridPane = new GridPane();
 
     // Array for weekdays starting from Monday
     String[] weekDays = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
@@ -58,8 +63,8 @@ public class HomeController implements Initializable {
     @FXML
     private FlowPane monthCalendar;
 
-    @FXML
-    private GridPane weekCalendarGrid;
+//    @FXML
+//    private GridPane weekCalendarGrid;
 
     @FXML
     private ImageView burgerImageView;
@@ -72,6 +77,15 @@ public class HomeController implements Initializable {
 
     @FXML
     private AnchorPane contentAnchorPane;
+
+    private int activeWeekOfYear = 12;
+
+    Map<String, Integer> timeSlots = Utils.generateTimeSlots(LocalTime.of(8, 0), LocalTime.of(19, 0), Duration.ofMinutes(30));
+
+    String filePath = "data/calendar.ics"; // Replace with your file path
+    List<Event> events = parseIcsFile(filePath);
+    private ObservableList<Event> observableEvents = FXCollections.observableArrayList();
+
 
     private void fillGridWithTimeSlotsAndEvents() {
         // Define the start and end times
@@ -157,6 +171,8 @@ public class HomeController implements Initializable {
 
     private void initializeDynamicGridPane() {
         // Set properties for GridPane
+        GridPane gridPane = new GridPane();
+
         gridPane.setGridLinesVisible(true);
         gridPane.setPrefHeight(520.0);
         gridPane.setPrefWidth(720.0);
@@ -188,16 +204,9 @@ public class HomeController implements Initializable {
         contentAnchorPane.getChildren().add(gridPane); // Assuming you want to add it to 'contentAnchorPane'
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        dateFocus = ZonedDateTime.now();
-        today = ZonedDateTime.now();
+    public void displayMonthGridPane() {
 
-        String filePath = "data/calendar.ics"; // Replace with your file path
-        List<Event> events = parseIcsFile(filePath);
-        System.out.println("Events: " + events);
-        // get time slot
-        Map<String, Integer> timeSlots = Utils.generateTimeSlots(LocalTime.of(8, 0), LocalTime.of(19, 0), Duration.ofMinutes(30));
+        GridPane gridPane = new GridPane();
 
         // header
         Label allDays = new Label("");
@@ -231,17 +240,17 @@ public class HomeController implements Initializable {
         fridayPane.setAlignment(Pos.CENTER);
 
 
-        dayCalendarGrid.add(allDaysPane, 0, 0);
-        dayCalendarGrid.add(mondayPane, 1, 0);
-        dayCalendarGrid.add(tuesdayPane, 2, 0);
-        dayCalendarGrid.add(wednesdayPane, 3, 0);
-        dayCalendarGrid.add(thursdayPane, 4, 0);
-        dayCalendarGrid.add(fridayPane, 5, 0);
+        gridPane.add(allDaysPane, 0, 0);
+        gridPane.add(mondayPane, 1, 0);
+        gridPane.add(tuesdayPane, 2, 0);
+        gridPane.add(wednesdayPane, 3, 0);
+        gridPane.add(thursdayPane, 4, 0);
+        gridPane.add(fridayPane, 5, 0);
 
-//        dayCalendarGrid.setHgap(5);
-        dayCalendarGrid.setVgap(0.5);
+//        gridPane.setHgap(5);
+        gridPane.setVgap(0.5);
 
-        dayCalendarGrid.setPadding(new Insets(10, 10, 10, 10));
+        gridPane.setPadding(new Insets(10, 10, 10, 10));
 
 
         ColumnConstraints column1 = new ColumnConstraints();
@@ -251,7 +260,7 @@ public class HomeController implements Initializable {
         ColumnConstraints column5 = new ColumnConstraints();
         ColumnConstraints column6 = new ColumnConstraints();
 
-        dayCalendarGrid.getColumnConstraints().addAll(column1, column2, column3, column4, column5, column6);
+        gridPane.getColumnConstraints().addAll(column1, column2, column3, column4, column5, column6);
 
         column1.setPrefWidth(200);
         column2.setPrefWidth(200);
@@ -283,74 +292,89 @@ public class HomeController implements Initializable {
                             "-fx-border-style: dashed;"
                     );
                     slotPane.setAlignment(Pos.CENTER); // Center the label within the stack pane
-                    dayCalendarGrid.add(slotPane, col, row);
+                    gridPane.add(slotPane, col, row);
 
                 } else {
                     Button button = getButton(row, col);
 
-                    dayCalendarGrid.add(button, col, row);
+                    gridPane.add(button, col, row);
                 }
-
-
-//                Button rowSpanButton2 = new Button("This label spans 3 rows");
-//                // This node will span 3 rows
-//                rowSpanButton2.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
-//
-//                dayCalendarGrid.add(rowSpanButton2, 5, 10);
-//                GridPane.setRowSpan(rowSpanButton2, 3);
 
 
             }
         }
+        gridPane.setId("weekCalendarGrid2");
+        weekCalendarGridHbox.getChildren().add(gridPane);
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        dateFocus = ZonedDateTime.now();
+        today = ZonedDateTime.now();
+
+        observableEvents.addListener((ListChangeListener<Event>) change -> {
+            while (change.next()) {
+                if (change.wasAdded() || change.wasRemoved()) {
+                    // Clear the existing grid and redraw based on observableEvents
+                    weekCalendarGridHbox.getChildren().clear();
+                    displayMonthGridPane(); // Assuming this method now uses observableEvents
+                    displayEventOnGridPane(observableEvents); // Modify this method to accept a List or ObservableList
+                }
+            }
+        });
+
+        displayMonthGridPane();
+
+        List<Event> events = getAllEventOfActiveWeek(activeWeekOfYear);
+        displayEventOnGridPane(events);
 
 
+//        fillGridWithTimeSlotsAndEvents();
+//        fillGridWithTimeSlots();
+//        drawCalendar();
+    }
+
+
+    private List<Event> getAllEventOfActiveWeek(int activeWeekOfYear) {
+        List<Event> filteredEvents = new ArrayList<>();
+        applyFilterToListOfAllEvents(activeWeekOfYear, filteredEvents);
+        return filteredEvents;
+    }
+
+
+    private void displayEventOnGridPane(List<Event> events) {
         for (Event event : events) {
 
-            if (isValidDateFormat(event.getDtStart()) && isValidDateFormat(event.getDtEnd()) && getWeekOfYear(event.getDtStart()) ) {
-
-                LocalDateTime updatedStartTime = addOneHourToDate(event.getDtStart());
-                LocalDateTime updatedEndTime = addOneHourToDate(event.getDtEnd());
-
-                if (event.getDescriptionDetails().getTd().contains("M1-IA-IL-ALT") || event.getDescriptionDetails().getTd().contains("M1 INTELLIGENCE")) {
-
-                    int numberOf30MinutesSlots = calculateNumberOf30MinIntervals(updatedStartTime, updatedEndTime);
-                    String stringEvent = "Debut: " + event.getDtStart() + "\nFin: " + event.getDtEnd() + "\nSalle: " + event.getDescriptionDetails().getSalle() + "\nEnseignant : " + event.getDescriptionDetails().getEnseignant() + "\nType: "+event.getDescriptionDetails().getType() + "\nMatiere:" + event.getDescriptionDetails().getMatiere() + "\n Formation: " + event.getDescriptionDetails().getTd();
-
-                    int startCol = getDayOfWeek(updatedStartTime);
-
-                    System.out.println("start = " + event.getDtStart());
-                    System.out.println("End = " + event.getDtEnd());
-
-                    String startTime = extractTime(updatedStartTime);
-                    System.out.println(startTime);
-
-                    if (timeSlots.containsKey(startTime) && startCol != -1) {
-                        int startRow = timeSlots.get(startTime);
-                        System.out.println("Nrow: " + numberOf30MinutesSlots);
-                        System.out.println("StartCol: " + startCol);
-                        System.out.println("startRow: " + startRow);
+            LocalDateTime updatedStartTime = addOneHourToDate(event.getDtStart());
+            LocalDateTime updatedEndTime = addOneHourToDate(event.getDtEnd());
 
 
-                        Button buttonEvent = new Button(stringEvent);
-                        buttonEvent.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+            int numberOf30MinutesSlots = calculateNumberOf30MinIntervals(updatedStartTime, updatedEndTime);
+            String stringEvent = "Debut: " + event.getDtStart() + "\nFin: " + event.getDtEnd() + "\nSalle: " + event.getDescriptionDetails().getSalle() + "\nEnseignant : " + event.getDescriptionDetails().getEnseignant() + "\nType: " + event.getDescriptionDetails().getType() + "\nMatiere:" + event.getDescriptionDetails().getMatiere() + "\n Formation: " + event.getDescriptionDetails().getTd();
 
-                        dayCalendarGrid.add(buttonEvent, startCol, startRow);
-                        GridPane.setRowSpan(buttonEvent, numberOf30MinutesSlots + 1);
-                    }
+            int startCol = getDayOfWeek(updatedStartTime);
 
+            System.out.println("start = " + event.getDtStart());
+            System.out.println("End = " + event.getDtEnd());
 
-                }
+            String startTime = extractTime(updatedStartTime);
+            System.out.println(startTime);
 
+            if (timeSlots.containsKey(startTime) && startCol != -1) {
+                int startRow = timeSlots.get(startTime);
+                System.out.println("Nrow: " + numberOf30MinutesSlots);
+                System.out.println("StartCol: " + startCol);
+                System.out.println("startRow: " + startRow);
 
+                Button buttonEvent = new Button(stringEvent);
+                buttonEvent.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+
+                GridPane gridPane = (GridPane) weekCalendarGridHbox.lookup("#weekCalendarGrid2");
+                gridPane.add(buttonEvent, startCol, startRow);
+                gridPane.setRowSpan(buttonEvent, numberOf30MinutesSlots + 1);
             }
-
         }
-
-
-        fillGridWithTimeSlotsAndEvents();
-        fillGridWithTimeSlots();
-//        addEventToGrid(new Event(LocalTime.of(8, 0), LocalTime.of(9, 30), "Java Class", "Cours"));
-        drawCalendar();
     }
 
 
@@ -494,6 +518,24 @@ public class HomeController implements Initializable {
         return calendarActivityMap;
     }
 
+    private void updateEventsForActiveWeek(int activeWeekOfYear) {
+        observableEvents.clear();
+        applyFilterToListOfAllEvents(activeWeekOfYear, observableEvents);
+    }
+
+    private void applyFilterToListOfAllEvents(int activeWeekOfYear, List<Event> observableEvents) {
+        for (Event event : events) { // Assuming 'events' is your master list of all events
+            if (isValidDateFormat(event.getDtStart()) && isValidDateFormat(event.getDtEnd()) &&
+                    isActiveWeekOfYearEqualToEventStartWeekOfYear(event.getDtStart(), activeWeekOfYear)) {
+                if (event.getDescriptionDetails().getTd().contains("M1-IA-IL-ALT") ||
+                        event.getDescriptionDetails().getTd().contains("M1 INTELLIGENCE")) {
+                    observableEvents.add(event);
+                }
+            }
+        }
+    }
+
+
     private Map<Integer, List<CalendarActivity>> getCalendarActivitiesMonth(ZonedDateTime dateFocus) {
         List<CalendarActivity> calendarActivities = new ArrayList<>();
         int year = dateFocus.getYear();
@@ -508,4 +550,20 @@ public class HomeController implements Initializable {
         return createCalendarMap(calendarActivities);
     }
 
+    public void onNextWeek(MouseEvent mouseEvent) {
+        activeWeekOfYear++;
+        updateEventsForActiveWeek(activeWeekOfYear);
+    }
+
+    public void onPrevWeek(MouseEvent mouseEvent) {
+        activeWeekOfYear--;
+        updateEventsForActiveWeek(activeWeekOfYear);
+    }
+
+    public void onTodayDateClick(MouseEvent mouseEvent) {
+        Calendar now = Calendar.getInstance(); // Gets the current date and time
+
+        this.activeWeekOfYear = now.get(Calendar.WEEK_OF_YEAR);
+        updateEventsForActiveWeek(activeWeekOfYear);
+    }
 }

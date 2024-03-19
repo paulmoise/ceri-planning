@@ -85,15 +85,15 @@
                                  <children>
                                     <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                        <children>
-                                          <Button layoutX="14.0" layoutY="4.0" mnemonicParsing="false" text="&lt;">
+                                          <Button layoutX="14.0" layoutY="4.0" mnemonicParsing="false" text="&lt;" onMouseClicked="#onPrevWeek" >
                                              <padding>
                                                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                              </padding></Button>
-                                          <Button layoutX="161.0" layoutY="4.0" mnemonicParsing="false" text="&gt;">
+                                          <Button layoutX="161.0" layoutY="4.0" mnemonicParsing="false" text="&gt;" onMouseClicked="#onNextWeek">
                                              <padding>
                                                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                              </padding></Button>
-                                          <Button layoutX="54.0" layoutY="4.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="95.0" text="Aujourd'hui">
+                                          <Button  layoutX="54.0" layoutY="4.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="95.0" text="Aujourd'hui" onMouseClicked="#onTodayDateClick">
                                              <padding>
                                                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                              </padding>
@@ -102,19 +102,19 @@
                                     </AnchorPane>
                                     <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                                        <children>
-                                          <Label layoutX="89.0" layoutY="14.0" prefHeight="18.0" prefWidth="99.0" text="Mars 2024" />
+                                          <Label fx:id="activeMonth" layoutX="89.0" layoutY="14.0" prefHeight="18.0" prefWidth="99.0" text="Mars 2024" />
                                        </children>
                                     </AnchorPane>
                                  </children>
                               </GridPane>
                            </children></HBox>
-                                <HBox layoutY="46.0" prefHeight="184.0" prefWidth="751.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
-                                    <children>
+                                <HBox fx:id="weekCalendarGridHbox" layoutY="46.0" prefHeight="184.0" prefWidth="751.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+<!--                                    <children>-->
 
-                                        <GridPane fx:id="dayCalendarGrid">
+<!--                                        <GridPane fx:id="dayCalendarGrid">-->
 
-                                        </GridPane>
-                                    </children>
+<!--                                        </GridPane>-->
+<!--                                    </children>-->
                                 </HBox>
                             </AnchorPane>
                         </Tab>

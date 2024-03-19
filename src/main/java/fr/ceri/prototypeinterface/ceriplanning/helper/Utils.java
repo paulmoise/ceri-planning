@@ -4,7 +4,6 @@ import fr.ceri.prototypeinterface.ceriplanning.model.DescriptionDetails;
 
 import java.time.*;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.time.temporal.IsoFields;
 import java.util.*;
 import java.util.regex.Matcher;
@@ -105,7 +104,7 @@ public class Utils {
         return date.format(outputFormatter);
     }
 
-    public static boolean getWeekOfYear(String givenDateString) {
+    public static boolean isActiveWeekOfYearEqualToEventStartWeekOfYear(String givenDateString, int activeWeekOfYear) {
 
         Calendar now = Calendar.getInstance(); // Gets the current date and time
         int weekOfYear = now.get(Calendar.WEEK_OF_YEAR);
@@ -122,7 +121,7 @@ public class Utils {
 
         System.out.println("Actual Week of year: " + weekOfYear);
         System.out.println("week of year: " + dateWeekOfYear);
-        return weekOfYear == dateWeekOfYear;
+        return activeWeekOfYear == dateWeekOfYear;
     }
 
     public static boolean isValidDateFormat(String dateStr) {
