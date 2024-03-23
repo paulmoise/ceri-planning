@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c8a42bfe-9577-47a0-8672-43196074d193" name="Changes" comment="month calendar view">
+    <list default="true" id="c8a42bfe-9577-47a0-8672-43196074d193" name="Changes" comment="week calendar next, prev, today feat">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/ceri/prototypeinterface/ceriplanning/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/ceri/prototypeinterface/ceriplanning/HomeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/ceri/prototypeinterface/ceriplanning/helper/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/ceri/prototypeinterface/ceriplanning/helper/Utils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/home-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/home-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,7 +171,7 @@
       <workItem from="1710229590576" duration="3553000" />
       <workItem from="1710289405531" duration="54139000" />
       <workItem from="1710499550042" duration="5251000" />
-      <workItem from="1710847538696" duration="5638000" />
+      <workItem from="1710847538696" duration="9406000" />
     </task>
     <task id="LOCAL-00001" summary="layout design">
       <option name="closed" value="true" />
@@ -238,7 +237,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710503045417</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="week calendar next, prev, today feat">
+      <option name="closed" value="true" />
+      <created>1710853567323</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1710853567323</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -263,7 +270,8 @@
     <MESSAGE value="design month view v3" />
     <MESSAGE value="design month view v4" />
     <MESSAGE value="month calendar view" />
-    <option name="LAST_COMMIT_MESSAGE" value="month calendar view" />
+    <MESSAGE value="week calendar next, prev, today feat" />
+    <option name="LAST_COMMIT_MESSAGE" value="week calendar next, prev, today feat" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

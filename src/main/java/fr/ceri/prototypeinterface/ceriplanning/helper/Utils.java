@@ -8,29 +8,10 @@ import java.time.temporal.IsoFields;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+import java.util.HashMap;
+import java.util.Map;
 public class Utils {
 
-//    public static List<String> generateTimeSlots(LocalTime startTime, LocalTime endTime, Duration slotDuration) {
-//        List<String> timeSlots = new ArrayList<>();
-//        LocalTime currentTime = startTime;
-//
-//        while (!currentTime.isAfter(endTime)) {
-//            timeSlots.add(currentTime.toString());
-//            currentTime = currentTime.plus(slotDuration);
-//        }
-//
-//        // Formatting to "HHHMM" pattern
-//        List<String> formattedTimeSlots = new ArrayList<>();
-//        for (String time : timeSlots) {
-//            String formattedTime = time.replace(":", "H");
-//            System.out.println(formattedTime);
-//            formattedTimeSlots.add(formattedTime);
-//        }
-//
-//
-//        return formattedTimeSlots;
-//    }
 
 
     public static DescriptionDetails getDescriptionDetailsFromHTML(String summary) {
@@ -173,6 +154,40 @@ public class Utils {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd'T'HHmmss'Z'");
         LocalDateTime dateTime = LocalDateTime.parse(dateStr, formatter);
         return dateTime.plusHours(1);
+    }
+
+
+    public static String getMonthFromWeek(int year, int weekOfYear) {
+
+        // Creating a map of month numbers to month names
+        Map<Integer, String> monthMap = new HashMap<>();
+        monthMap.put(1, "Janvier");
+        monthMap.put(2, "Février");
+        monthMap.put(3, "Mars");
+        monthMap.put(4, "Avril");
+        monthMap.put(5, "Mai");
+        monthMap.put(6, "Juin");
+        monthMap.put(7, "Juillet");
+        monthMap.put(8, "Août");
+        monthMap.put(9, "Septembre");
+        monthMap.put(10, "Octobre");
+        monthMap.put(11, "Novembre");
+        monthMap.put(12, "Décembre");
+
+
+        Calendar calendar = Calendar.getInstance();
+
+        calendar.set(Calendar.YEAR, year);
+        calendar.set(Calendar.MONTH, Calendar.JANUARY);
+        calendar.set(Calendar.DAY_OF_MONTH, 1);
+
+        calendar.add(Calendar.WEEK_OF_YEAR, weekOfYear - 1);
+
+        calendar.add(Calendar.DAY_OF_MONTH, 3);
+
+        int month = calendar.get(Calendar.MONTH) + 1;
+
+        return monthMap.get(month);
     }
 
     public static void main(String[] args) {

@@ -28,6 +28,7 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZonedDateTime;
+import java.time.format.TextStyle;
 import java.util.*;
 
 import static fr.ceri.prototypeinterface.ceriplanning.helper.ICSFileParser.parseIcsFile;
@@ -77,6 +78,9 @@ public class HomeController implements Initializable {
 
     @FXML
     private AnchorPane contentAnchorPane;
+
+    @FXML
+    private Label activeMonth;
 
     private int activeWeekOfYear = 12;
 
@@ -317,6 +321,8 @@ public class HomeController implements Initializable {
             while (change.next()) {
                 if (change.wasAdded() || change.wasRemoved()) {
                     // Clear the existing grid and redraw based on observableEvents
+                    updateActiveMonthLabel();
+
                     weekCalendarGridHbox.getChildren().clear();
                     displayMonthGridPane(); // Assuming this method now uses observableEvents
                     displayEventOnGridPane(observableEvents); // Modify this method to accept a List or ObservableList
@@ -562,8 +568,14 @@ public class HomeController implements Initializable {
 
     public void onTodayDateClick(MouseEvent mouseEvent) {
         Calendar now = Calendar.getInstance(); // Gets the current date and time
-
         this.activeWeekOfYear = now.get(Calendar.WEEK_OF_YEAR);
         updateEventsForActiveWeek(activeWeekOfYear);
+    }
+
+    private void updateActiveMonthLabel() {
+        String monthName = getMonthFromWeek(2024, activeWeekOfYear);
+        String capitalizedMonthName = monthName.substring(0, 1).toUpperCase() + monthName.substring(1).toLowerCase();
+
+        activeMonth.setText(capitalizedMonthName+ " " + 2024);
     }
 }
