@@ -9,8 +9,25 @@ import java.util.ArrayList;
 
 public class Conexion {
 
-    public   ArrayList<CreateConnexion> studentList = new ArrayList<>();
-    public  ArrayList<CreateConnexion> teacherList = new ArrayList<>();
+    private   ArrayList<CreateConnexion> studentList = new ArrayList<>();
+
+    public ArrayList<CreateConnexion> getStudentList() {
+        return studentList;
+    }
+
+    public void setStudentList(ArrayList<CreateConnexion> studentList) {
+        this.studentList = studentList;
+    }
+
+    public ArrayList<CreateConnexion> getTeacherList() {
+        return teacherList;
+    }
+
+    public void setTeacherList(ArrayList<CreateConnexion> teacherList) {
+        this.teacherList = teacherList;
+    }
+
+    private  ArrayList<CreateConnexion> teacherList = new ArrayList<>();
 
     public static final String teacherFilename = "data/teacher.txt";
     public static final String studentFilename = "data/etudiant.txt";

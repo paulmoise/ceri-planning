@@ -50,13 +50,13 @@ public class LoginController {
 
         if (isStudent) {
             statusLabel.setText("Connexion en tant qu'étudiant : " + username);
-            for (CreateConnexion e : c.studentList) {
+            for (CreateConnexion e : c.getStudentList()) {
                 if (e.equals(individu)) {
                     switchToAcueil(event);
                 }
             }
         } else if (isProfessor) {
-            for (CreateConnexion e : c.teacherList) {
+            for (CreateConnexion e : c.getTeacherList()) {
                 if (e.equals(individu)) {
                     switchToAcueil(event);
                 }
