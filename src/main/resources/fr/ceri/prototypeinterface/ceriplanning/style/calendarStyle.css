@@ -1,0 +1,11 @@
+.button-hover {
+    -fx-background-color: #eeeee4;
+    -fx-border-color: black;
+    -fx-border-width: 1;
+    -fx-border-style: dashed;
+    -fx-background-insets: 0;
+}
+
+.button-hover:hover {
+    -fx-background-color: #cccccc;
+}
