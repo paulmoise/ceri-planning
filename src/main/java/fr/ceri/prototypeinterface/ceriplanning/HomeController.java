@@ -7,6 +7,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
@@ -187,6 +189,7 @@ public class HomeController implements Initializable {
         fillGridWithTimeSlots();
         addEventToGrid(new Event(LocalTime.of(8, 0), LocalTime.of(9, 30), "Java Class", "Cours"));
         drawCalendar();
+        ajouterCours("stochasiques",   8 , 30,  3);
     }
 
     @FXML
@@ -320,5 +323,36 @@ public class HomeController implements Initializable {
 
         return createCalendarMap(calendarActivities);
     }
+
+
+    // Importation nécessaire pour utiliser la classe Button
+
+
+
+
+
+
+    public void ajouterCours(String nomCours, int debutHeure, int debutMinute, int duree) {
+        // Calcul de la position dans la grille en fonction de l'heure de début et de la durée
+        int rowIndex = (debutHeure - 8) * 2 + (debutMinute == 30 ? 2 : 1); // Par exemple, 8:30 est à la 3ème ligne, 9:00 est à la 4ème ligne, etc.
+        int rowSpan = duree * 2; // Par exemple, si le cours dure 2 heures, il s'étend sur 4 lignes
+        System.out.println(rowIndex);
+        System.out.println(rowSpan);
+        Button bouton = new Button("M");
+        bouton.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
+
+        // Définir la taille du bouton
+
+
+        weekCalendarGrid.add(bouton, 4, rowIndex);
+
+
+    }
+
+
+
+
+
+
 
 }

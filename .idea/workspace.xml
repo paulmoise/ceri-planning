@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c8a42bfe-9577-47a0-8672-43196074d193" name="Changes" comment="design month view v3">
-      <change afterPath="$PROJECT_DIR$/src/main/java/fr/ceri/prototypeinterface/ceriplanning/helper/Event.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/fr/ceri/prototypeinterface/ceriplanning/EventExtractor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/calendar.ics" beforeDir="false" afterPath="$PROJECT_DIR$/data/calendar.ics" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/ceri/prototypeinterface/ceriplanning/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/ceri/prototypeinterface/ceriplanning/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/home-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fr/ceri/prototypeinterface/ceriplanning/home-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,8 +31,20 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="JavaAutoRunManager">
+    <enabled-run-configurations>
+      <run-configuration type="MavenRunConfiguration" name="ceri-planning [install]" />
+    </enabled-run-configurations>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+      </MavenGeneralSettings>
+    </option>
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
@@ -58,10 +70,10 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.importing&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -76,8 +88,8 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.HelloApplication">
-    <configuration name="CalendarApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="fr.ceri.prototypeinterface.ceriplanning.CalendarApp" />
+    <configuration name="CalendarParser" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="fr.ceri.prototypeinterface.ceriplanning.CalendarParser" />
       <module name="ceri-planning" />
       <extension name="coverage">
         <pattern>
@@ -89,8 +101,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="fr.ceri.prototypeinterface.ceriplanning.HelloApplication" />
+    <configuration name="EventExtractor (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="EventExtractor" />
+      <module name="ceri-planning" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EventExtractor" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="fr.ceri.prototypeinterface.ceriplanning.EventExtractor" />
       <module name="ceri-planning" />
       <extension name="coverage">
         <pattern>
@@ -102,24 +121,44 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ICSParser" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="fr.ceri.prototypeinterface.ceriplanning.helper.ICSParser" />
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="ceri-planning" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Page" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="fr.ceri.prototypeinterface.ceriplanning.Page" />
       <module name="ceri-planning" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="fr.ceri.prototypeinterface.ceriplanning.helper.*" />
+          <option name="PATTERN" value="fr.ceri.prototypeinterface.ceriplanning.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.HelloApplication" />
-        <item itemvalue="Application.ICSParser" />
-        <item itemvalue="Application.CalendarApp" />
+        <item itemvalue="Application.EventExtractor" />
+        <item itemvalue="Application.EventExtractor (1)" />
+        <item itemvalue="Application.CalendarParser" />
+        <item itemvalue="Application.Page" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -137,6 +176,15 @@
       <workItem from="1709844006997" duration="579000" />
       <workItem from="1709844596224" duration="12674000" />
       <workItem from="1710065351846" duration="29350000" />
+      <workItem from="1710230668200" duration="118000" />
+      <workItem from="1710230810334" duration="36000" />
+      <workItem from="1710231641231" duration="22000" />
+      <workItem from="1710231902221" duration="25000" />
+      <workItem from="1710242535641" duration="1013000" />
+      <workItem from="1710243867002" duration="1613000" />
+      <workItem from="1710321985092" duration="23032000" />
+      <workItem from="1710416952675" duration="877000" />
+      <workItem from="1711194521483" duration="320000" />
     </task>
     <task id="LOCAL-00001" summary="layout design">
       <option name="closed" value="true" />
@@ -197,7 +245,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -210,6 +270,21 @@
     <MESSAGE value="design month view v2" />
     <MESSAGE value="design month view v3" />
     <option name="LAST_COMMIT_MESSAGE" value="design month view v3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/fr/ceri/prototypeinterface/ceriplanning/EventExtractor.java</url>
+          <line>141</line>
+          <properties class="fr.ceri.prototypeinterface.ceriplanning.EventExtractor" method="main">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

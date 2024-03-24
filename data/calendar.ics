@@ -48,6 +48,7 @@ X-ALT-DESC;FMTTYPE=text/html:Matière : Reservation de salles<br/>TD : IA-IL
   M1-SICOM-Alt\, M1IL-CMI-alt\, M2IL-Alt-Gr1\, M2IL-Alt-Gr2\, M2SI-Alt<br/>
  Mémo : entreprise<br/>
 END:VEVENT
+
 BEGIN:VEVENT
 CATEGORIES:HYPERPLANNING
 DTSTAMP:20240214T190739Z
