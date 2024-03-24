@@ -30,6 +30,7 @@
                             </image>
                         </ImageView>
                     </graphic>
+
                 </Label>
                 <Label fx:id="exit" prefHeight="37.0" prefWidth="39.0">
                     <graphic>
