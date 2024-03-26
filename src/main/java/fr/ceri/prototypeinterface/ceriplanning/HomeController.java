@@ -1,5 +1,6 @@
 package fr.ceri.prototypeinterface.ceriplanning;
 
+import fr.ceri.prototypeinterface.ceriplanning.helper.Filter;
 import fr.ceri.prototypeinterface.ceriplanning.helper.Utils;
 import fr.ceri.prototypeinterface.ceriplanning.model.CalendarActivity;
 import fr.ceri.prototypeinterface.ceriplanning.model.Event;
@@ -13,14 +14,18 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -36,7 +41,8 @@ import static fr.ceri.prototypeinterface.ceriplanning.helper.Utils.*;
 
 public class HomeController implements Initializable {
 
-
+    @FXML
+    public TextField searchTextField;
     @FXML
     private AnchorPane weekcalendar;
 
@@ -50,7 +56,7 @@ public class HomeController implements Initializable {
 
     // Array for weekdays starting from Monday
     String[] weekDays = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
-
+    public static final List <Event>listefiltred = new ArrayList<>();
 
     ZonedDateTime dateFocus;
     ZonedDateTime today;
@@ -87,8 +93,11 @@ public class HomeController implements Initializable {
     Map<String, Integer> timeSlots = Utils.generateTimeSlots(LocalTime.of(8, 0), LocalTime.of(19, 0), Duration.ofMinutes(30));
 
     String filePath = "data/calendar.ics"; // Replace with your file path
-    List<Event> events = parseIcsFile(filePath);
+   // List<Event> events = parseIcsFile(filePath);
+
+    List<Event> events=HelloApplication.listefiltredm;
     private ObservableList<Event> observableEvents = FXCollections.observableArrayList();
+    public static final Filter filter =new Filter();
 
 
     private void fillGridWithTimeSlotsAndEvents() {
@@ -332,13 +341,10 @@ public class HomeController implements Initializable {
 
         displayMonthGridPane();
 
-        List<Event> events = getAllEventOfActiveWeek(activeWeekOfYear);
-        displayEventOnGridPane(events);
+        List<Event> Events = getAllEventOfActiveWeek(activeWeekOfYear);
+        displayEventOnGridPane(Events);
 
 
-//        fillGridWithTimeSlotsAndEvents();
-//        fillGridWithTimeSlots();
-//        drawCalendar();
     }
 
 
@@ -533,8 +539,7 @@ public class HomeController implements Initializable {
         for (Event event : events) { // Assuming 'events' is your master list of all events
             if (isValidDateFormat(event.getDtStart()) && isValidDateFormat(event.getDtEnd()) &&
                     isActiveWeekOfYearEqualToEventStartWeekOfYear(event.getDtStart(), activeWeekOfYear)) {
-                if (event.getDescriptionDetails().getTd().contains("M1-IA-IL-ALT") ||
-                        event.getDescriptionDetails().getTd().contains("M1 INTELLIGENCE")) {
+                 {
                     observableEvents.add(event);
                 }
             }
@@ -578,4 +583,56 @@ public class HomeController implements Initializable {
 
         activeMonth.setText(capitalizedMonthName+ " " + 2024);
     }
+
+    public void recherchersalle(ActionEvent actionEvent) {
+        String seachdtring  =searchTextField.getText();
+       ArrayList<Event> l= filter.getSalleSchedule(seachdtring);
+       for (Event e : l){
+           System.out.println("-----------RECHERCHE SALLE --------------");
+           System.out.println(e.getDescriptionDetails().toString());
+           listefiltred.add(e);
+       }
+
+        try {
+            // Charge le fichier FXML de la nouvelle vue
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("search-view.fxml"));
+            Parent root = loader.load();
+
+            // Crée un nouveau stage
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+
+            // Affiche le nouveau stage
+            stage.show();
+
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Méthode pour changer de page
+    public void loadContents(String fxmlFileName, Node node) {
+        try {
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFileName));
+            Parent root = loader.load();
+
+
+            Stage stage = (Stage) node.getScene().getWindow();
+
+
+            stage.setScene(new Scene(root, 800, 600));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+     /* public void recherchersalle(ActionEvent actionEvent) {
+        String seachdtring  =searchTextField.getText();
+        filter.getSalleSchedule(seachdtring);
+    }*/
 }

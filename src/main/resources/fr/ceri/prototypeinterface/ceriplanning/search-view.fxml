@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.ceri.prototypeinterface.ceriplanning.SearchController">
+       <AnchorPane layoutX="166.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0">
+           <children>
+               <HBox>
+           <children>
+               <HBox alignment="TOP_LEFT" spacing="10.0">
+                   <children>
+                       <Button onMouseClicked="#showSearchFieldForSalle" prefHeight="33.0" prefWidth="50.0" text="Salle" />
+                       <Button onMouseClicked="#showSearchFieldForFormationss" prefHeight="30.0" prefWidth="85.0" text="Formation" />
+                       <Button onMouseClicked="#showSearchFieldForReservation" prefHeight="31.0" prefWidth="96.0" text="Réservation" />
+                       <TextField fx:id="searchField" prefWidth="200.0" promptText="Entrez votre recherche" visible="false"  onAction="#onSearchEnterPressed"/>
+                   </children>
+                  <HBox.margin>
+                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                  </HBox.margin>
+                  <padding>
+                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                  </padding>
+               </HBox>
+
+               <HBox alignment="TOP_RIGHT" spacing="5.0">
+                   <children>
+               <Button layoutX="14.0" layoutY="4.0" mnemonicParsing="false" onMouseClicked="#onPrevWeek" text="&lt;">
+                   <padding>
+                       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                   </padding>
+               </Button>
+               <Button layoutX="54.0" layoutY="4.0" mnemonicParsing="false" onMouseClicked="#onTodayDateClick" prefHeight="36.0" prefWidth="95.0" text="Aujourd'hui">
+                   <padding>
+                       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                   </padding>
+               </Button>
+               <Button layoutX="161.0" layoutY="4.0" mnemonicParsing="false" onMouseClicked="#onNextWeek" text="&gt;">
+                   <padding>
+                       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                   </padding>
+               </Button>
+           </children>
+                  <HBox.margin>
+                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                  </HBox.margin>
+                  <padding>
+                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                  </padding>
+               </HBox>
+           </children>
+               </HBox>
+
+            <AnchorPane fx:id="contentAnchorPane" layoutX="2.0" layoutY="86.0" prefHeight="100.0" prefWidth="200.0" />
+
+           </children>
+       </AnchorPane>
+    <HBox alignment="CENTER" layoutX="27.0" layoutY="38.0" prefWidth="31.0">
+        <opaqueInsets>
+            <Insets top="3.0" />
+        </opaqueInsets>
+    </HBox>
+    <padding>
+        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+    </padding>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+</AnchorPane>
