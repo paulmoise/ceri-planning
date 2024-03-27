@@ -20,10 +20,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 
 import java.net.URL;
-import java.time.Duration;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.ZonedDateTime;
+import java.time.*;
+import java.time.temporal.WeekFields;
 import java.util.*;
 
 import static fr.ceri.prototypeinterface.ceriplanning.helper.ICSFileParser.parseIcsFile;
@@ -36,6 +34,10 @@ public class SearchController implements Initializable {
     public TextField searchField;
     String[] weekDays = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
 
+   // LocalDate currentDate = LocalDate.now();
+
+    // Calculez le numéro de la semaine en cours
+  //  int activeWeekOfYear = currentDate.get(WeekFields.of(Locale.getDefault()).weekOfWeekBasedYear());
     private int activeWeekOfYear = 12;
     ZonedDateTime dateFocus;
     ZonedDateTime today;
@@ -255,17 +257,17 @@ public class SearchController implements Initializable {
 
             int startCol = getDayOfWeek(updatedStartTime);
 
-            System.out.println("start = " + event.getDtStart());
-            System.out.println("End = " + event.getDtEnd());
+           // System.out.println("start = " + event.getDtStart());
+           // System.out.println("End = " + event.getDtEnd());
 
             String startTime = extractTime(updatedStartTime);
             System.out.println(startTime);
 
             if (timeSlots.containsKey(startTime) && startCol != -1) {
                 int startRow = timeSlots.get(startTime);
-                System.out.println("Nrow: " + numberOf30MinutesSlots);
-                System.out.println("StartCol: " + startCol);
-                System.out.println("startRow: " + startRow);
+               // System.out.println("Nrow: " + numberOf30MinutesSlots);
+               // System.out.println("StartCol: " + startCol);
+               // System.out.println("startRow: " + startRow);
 
                 Button buttonEvent = new Button(stringEvent);
                 buttonEvent.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
@@ -305,6 +307,7 @@ public class SearchController implements Initializable {
 
     public void showSearchFieldForReservation(MouseEvent mouseEvent) {
         searchField.setVisible(true);
+        isschedule= true ;
         searchField.setPromptText("Rechercher une salle...");
     }
 
@@ -320,26 +323,108 @@ public class SearchController implements Initializable {
         searchField.setPromptText("Rechercher une salle...");
     }
 
+  /*  public void onSearchEnterPressed(KeyEvent keyEvent) {
+        if (keyEvent.getCode().equals(KeyCode.ENTER)) {
+            String searchString = searchField.getText();
+            searchField.clear();
+            searchField.setVisible(false);
+            Filter f ; new Filter();
+            ArrayList<Event> listeUpdated = new ArrayList<>();
+            System.out.println( "BLALLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL");
+
+            if (isalle) {
+               f= new Filter();
+                isalle = false;
+                System.out.println(searchString);
+                listeUpdated = f.getSalleSchedule(searchString);
+                //ArrayList<Event > listesalle =f.getSalleSchedule(searchString);
+;
+               // System.out.println(listeUpdated.size()+" je suis la taille du liste");
+              /// System.out.println(listesalle.size()+" je suis la taille du liste 22222");
+                System.out.println("test is salle passed");
+
+               // ArrayList<Event > listesalle =f.getSalleSchedule("S5 = C 024");
+
+
+            } else if (isformation) {
+                f= new Filter();
+                listeUpdated = f.getFormationSchedule(searchString);
+                isformation = false;
+                isschedule = false;
+                System.out.println(searchString + " formation");
+
+                System.out.println(listeUpdated.size()+" je suis la taille du liste");
+
+            } else if (isschedule) {
+                f= new Filter();
+                //ESTEVE Yannick
+                listeUpdated = f.getPersonnesSchedule(searchString);
+                isschedule = false;
+
+                System.out.println(" je suis lenseignat "+ searchString);
+                //ArrayList<Event > listeEnseignat  =f.getPersonnesSchedule("ESTEVE Yannick");
+              //  ArrayList<Event > listesalle =f.getSalleSchedule("S5 = C 024");
+                System.out.println(listeUpdated.size()+" je suis la taille du liste");
+              //  System.out.println(listesalle.size()+" je suis la taille du liste 22222");
+            }
+            if(!listeUpdated.isEmpty()){
+                observableEvents.removeAll();
+                System.out.println(observableEvents.size() + "taille actullle");
+                System.out.println(" je mets a jourss la liste "+ listeUpdated.size());
+                System.out.println(events.size()+ " taille avant ");
+                events.addAll(listeUpdated);
+                System.out.println( events.size()+ "taille apres ");
+                updateEventsForActiveWeek(activeWeekOfYear);
+
+               getutils(activeWeekOfYear, observableEvents, listeUpdated);
+               System.out.println(observableEvents.size() + "taille finales");
+            }
+
+        }
+    }*/
+
     public void onSearchEnterPressed(KeyEvent keyEvent) {
         if (keyEvent.getCode().equals(KeyCode.ENTER)) {
             String searchString = searchField.getText();
+            searchField.clear();
+            searchField.setVisible(false);
             Filter f = new Filter();
             ArrayList<Event> listeUpdated = new ArrayList<>();
-
+            activeWeekOfYear=12;
             if (isalle) {
-                listeUpdated = f.getSalleSchedule(searchString);
+                f = new Filter();
                 isalle = false;
+                System.out.println(searchString);
+                listeUpdated = f.getSalleSchedule(searchString);
+                System.out.println("test is salle passed");
             } else if (isformation) {
+                f = new Filter();
                 listeUpdated = f.getFormationSchedule(searchString);
                 isformation = false;
+                isschedule = false;
+                System.out.println(searchString + " formation");
             } else if (isschedule) {
+                f = new Filter();
                 listeUpdated = f.getPersonnesSchedule(searchString);
                 isschedule = false;
+                System.out.println(" je suis lenseignat " + searchString);
             }
 
-            events.clear();
-            events.addAll(listeUpdated);
-            getutils(activeWeekOfYear, observableEvents, listeUpdated);
+            if (!listeUpdated.isEmpty()) {
+                System.out.println(" je mets a jourss la liste " + listeUpdated.size());
+                System.out.println(events.size() + " taille avant ");
+                events.clear();
+                events.addAll(listeUpdated);
+                System.out.println(events.size() + " taille apres ");
+                updateEventsForActiveWeek(activeWeekOfYear);
+                getutils(activeWeekOfYear, observableEvents, events);
+
+                // Mettre à jour le GridPane après avoir modifié les événements
+                contentAnchorPane.getChildren().clear();
+                displayMonthGridPane();
+                displayEventOnGridPane(observableEvents);
+            }
         }
     }
+
 }

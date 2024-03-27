@@ -33,7 +33,7 @@ public class Filter {
         }
         for (Event e : events){
             String enseignant  = e.getDescriptionDetails().getEnseignant();
-            System.out.println(enseignant);
+           // System.out.println(enseignant);
             if (enseignant != null && enseignant.replaceAll("\\s+", "").equalsIgnoreCase(name.replaceAll("\\s+", "")))  {
                 listeSalles.add(e);
             }
@@ -92,7 +92,7 @@ public class Filter {
         ArrayList<Event > listesalle =f.getSalleSchedule("S5 = C 024");
         ArrayList<Event > listeEnseignat  =f.getPersonnesSchedule("ESTEVE Yannick");
         for(Event e : listeEnseignat){
-            System.out.println(e.getDescriptionDetails());
+           // System.out.println(e.getDescriptionDetails());
 
 
         }

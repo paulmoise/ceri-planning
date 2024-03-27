@@ -27,8 +27,8 @@ public class HelloApplication extends Application {
 
         ArrayList<Event> l= filter.getFormationSchedule(seachdtring);
         for (Event e : l){
-            System.out.println("-------------------------");
-            System.out.println(e.getDescriptionDetails().toString());
+            //System.out.println("-------------------------");
+           // System.out.println(e.getDescriptionDetails().toString());
             listefiltredm .add(e);
         }
     }

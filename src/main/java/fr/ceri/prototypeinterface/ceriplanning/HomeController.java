@@ -29,11 +29,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.time.Duration;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.ZonedDateTime;
+import java.time.*;
 import java.time.format.TextStyle;
+import java.time.temporal.WeekFields;
 import java.util.*;
 
 import static fr.ceri.prototypeinterface.ceriplanning.helper.ICSFileParser.parseIcsFile;
@@ -89,7 +87,10 @@ public class HomeController implements Initializable {
     private Label activeMonth;
 
     private int activeWeekOfYear = 12;
+    //LocalDate currentDate = LocalDate.now();
 
+    // Calculez le numéro de la semaine en cours
+    //int activeWeekOfYear = currentDate.get(WeekFields.of(Locale.getDefault()).weekOfWeekBasedYear());
     Map<String, Integer> timeSlots = Utils.generateTimeSlots(LocalTime.of(8, 0), LocalTime.of(19, 0), Duration.ofMinutes(30));
 
     String filePath = "data/calendar.ics"; // Replace with your file path
@@ -342,6 +343,7 @@ public class HomeController implements Initializable {
         displayMonthGridPane();
 
         List<Event> Events = getAllEventOfActiveWeek(activeWeekOfYear);
+       // List<Event> Events =HelloApplication.listefiltredm;
         displayEventOnGridPane(Events);
 
 
@@ -367,17 +369,17 @@ public class HomeController implements Initializable {
 
             int startCol = getDayOfWeek(updatedStartTime);
 
-            System.out.println("start = " + event.getDtStart());
-            System.out.println("End = " + event.getDtEnd());
+            //System.out.println("start = " + event.getDtStart());
+           // System.out.println("End = " + event.getDtEnd());
 
             String startTime = extractTime(updatedStartTime);
-            System.out.println(startTime);
+            //System.out.println(startTime);
 
             if (timeSlots.containsKey(startTime) && startCol != -1) {
                 int startRow = timeSlots.get(startTime);
-                System.out.println("Nrow: " + numberOf30MinutesSlots);
-                System.out.println("StartCol: " + startCol);
-                System.out.println("startRow: " + startRow);
+               // System.out.println("Nrow: " + numberOf30MinutesSlots);
+                //System.out.println("StartCol: " + startCol);
+              //  System.out.println("startRow: " + startRow);
 
                 Button buttonEvent = new Button(stringEvent);
                 buttonEvent.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
@@ -585,30 +587,31 @@ public class HomeController implements Initializable {
     }
 
     public void recherchersalle(ActionEvent actionEvent) {
-        String seachdtring  =searchTextField.getText();
-       ArrayList<Event> l= filter.getSalleSchedule(seachdtring);
-       for (Event e : l){
-           System.out.println("-----------RECHERCHE SALLE --------------");
-           System.out.println(e.getDescriptionDetails().toString());
-           listefiltred.add(e);
-       }
+        String seachdtring = searchTextField.getText();
+        ArrayList<Event> l = filter.getSalleSchedule(seachdtring);
+        for (Event e : l) {
+            // System.out.println("-----------RECHERCHE SALLE --------------");
+            //System.out.println(e.getDescriptionDetails().toString());
+            listefiltred.add(e);
+        }
+        if (!listefiltred.isEmpty()) {
 
-        try {
-            // Charge le fichier FXML de la nouvelle vue
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("search-view.fxml"));
-            Parent root = loader.load();
+            try {
+                // Charge le fichier FXML de la nouvelle vue
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("search-view.fxml"));
+                Parent root = loader.load();
 
-            // Crée un nouveau stage
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
+                // Crée un nouveau stage
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
 
-            // Affiche le nouveau stage
-            stage.show();
+                // Affiche le nouveau stage
+                stage.show();
 
 
-
-        } catch (Exception e) {
-            e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 

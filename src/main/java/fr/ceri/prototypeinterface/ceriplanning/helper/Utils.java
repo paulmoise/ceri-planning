@@ -100,8 +100,8 @@ public class Utils {
         // Get the week of the year
         int dateWeekOfYear = date.get(IsoFields.WEEK_OF_WEEK_BASED_YEAR);
 
-        System.out.println("Actual Week of year: " + weekOfYear);
-        System.out.println("week of year: " + dateWeekOfYear);
+       // System.out.println("Actual Week of year: " + weekOfYear);
+       // System.out.println("week of year: " + dateWeekOfYear);
         return activeWeekOfYear == dateWeekOfYear;
     }
 
