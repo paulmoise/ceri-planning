@@ -16,14 +16,14 @@ public class HelloApplication extends Application {
     public static final List<Event> listefiltredm = new ArrayList<>();
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("home-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
         stage.setTitle("Hello!");
         stage.setScene(scene);
-        seachformation("M1-IA-IL-ALT");
+        //seachformation("M1-IA-IL-ALT");
         stage.show();
     }
-    public void seachformation(String seachdtring){
+    /*public void seachformation(String seachdtring){
 
         ArrayList<Event> l= filter.getFormationSchedule(seachdtring);
         for (Event e : l){
@@ -31,7 +31,7 @@ public class HelloApplication extends Application {
            // System.out.println(e.getDescriptionDetails().toString());
             listefiltredm .add(e);
         }
-    }
+    }*/
     public static void main(String[] args) {
         launch();
     }

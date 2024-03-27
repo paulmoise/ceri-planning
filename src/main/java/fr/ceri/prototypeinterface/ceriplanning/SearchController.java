@@ -424,6 +424,7 @@ public class SearchController implements Initializable {
                 displayMonthGridPane();
                 displayEventOnGridPane(observableEvents);
             }
+            else contentAnchorPane.getChildren().clear();
         }
     }
 

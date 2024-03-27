@@ -1,7 +1,9 @@
 package fr.ceri.prototypeinterface.ceriplanning;
 
 import fr.ceri.prototypeinterface.ceriplanning.helper.Conexion;
+import fr.ceri.prototypeinterface.ceriplanning.helper.Filter;
 import fr.ceri.prototypeinterface.ceriplanning.model.CreateConnexion;
+import fr.ceri.prototypeinterface.ceriplanning.model.Event;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +17,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LoginController {
     @FXML
@@ -31,6 +35,8 @@ public class LoginController {
 
     @FXML
     private Label statusLabel;
+    Filter filter =new Filter();
+    public static final List<Event> listefiltredm = new ArrayList<>();
 
     Conexion c = null;
 
@@ -67,6 +73,7 @@ public class LoginController {
     }
 
     void switchToAcueil(ActionEvent event) {
+        seachformation("M1-IA-IL-ALT");
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("home-view.fxml"));
             Parent root = fxmlLoader.load();
@@ -80,6 +87,15 @@ public class LoginController {
             stage.setScene(newScene);
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+    public void seachformation(String seachdtring){
+
+        ArrayList<Event> l= filter.getFormationSchedule(seachdtring);
+        for (Event e : l){
+            //System.out.println("-------------------------");
+            // System.out.println(e.getDescriptionDetails().toString());
+            listefiltredm .add(e);
         }
     }
 }

@@ -596,22 +596,23 @@ public class HomeController implements Initializable {
         }
         if (!listefiltred.isEmpty()) {
 
-            try {
-                // Charge le fichier FXML de la nouvelle vue
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("search-view.fxml"));
-                Parent root = loader.load();
 
-                // Crée un nouveau stage
-                Stage stage = new Stage();
-                stage.setScene(new Scene(root));
+                try {
+                    FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("search-view.fxml"));
+                    Parent root = fxmlLoader.load();
+                    Scene newScene = new Scene(root, 320, 240);
 
-                // Affiche le nouveau stage
-                stage.show();
+                    // Récupérer la scène actuelle
+                    Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                    Scene currentScene = stage.getScene();
+
+                    // Remplacer la scène actuelle par la nouvelle scène
+                    stage.setScene(newScene);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
 
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
         }
     }
 
