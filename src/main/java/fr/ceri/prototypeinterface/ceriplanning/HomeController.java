@@ -96,7 +96,7 @@ public class HomeController implements Initializable {
     String filePath = "data/calendar.ics"; // Replace with your file path
    // List<Event> events = parseIcsFile(filePath);
 
-    List<Event> events=HelloApplication.listefiltredm;
+    List<Event> events=LoginController.listefiltredm;
     private ObservableList<Event> observableEvents = FXCollections.observableArrayList();
     public static final Filter filter =new Filter();
 
@@ -289,6 +289,7 @@ public class HomeController implements Initializable {
         column1.setPercentWidth(percentWidth);
         column2.setPercentWidth(percentWidth);
         column3.setPercentWidth(percentWidth);
+
         column4.setPercentWidth(percentWidth);
         column5.setPercentWidth(percentWidth);
         column6.setPercentWidth(percentWidth);

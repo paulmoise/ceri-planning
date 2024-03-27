@@ -73,12 +73,12 @@ public class LoginController {
     }
 
     void switchToAcueil(ActionEvent event) {
-        seachformation("M1-IA-IL-ALT");
+
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("home-view.fxml"));
             Parent root = fxmlLoader.load();
             Scene newScene = new Scene(root, 320, 240);
-
+            seachformation("M1-IA-IL-ALT");
             // Récupérer la scène actuelle
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene currentScene = stage.getScene();
